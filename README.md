@@ -40,35 +40,35 @@ dependencies {
 1. Add View in XML
 
 ```xml
-<com.aksoftwaresolution.bottomnavigationview.BottomNavigationView
-    android:id="@+id/bottomNavigation"
-    android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:layout_alignParentBottom="true"
-    app:mcn_backgroundColor="#EFC486"
-    app:mcn_circleColor="#FFFFFF"
-    app:mcn_iconColor="#FF5722"
-    app:mcn_selectedIconColor="#FF5722/>
+  <com.aksoftwaresolution.navigationview.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        app:mcn_backgroundColor="#EFC486"
+        app:mcn_circleColor="#FFFFFF"
+        app:mcn_iconColor="#FF5722"
+        app:mcn_selectedIconColor="#FF5722"
+        app:menu="@menu/bottom_nav_menu"
+        />
+
 
 ```
 ### 2. Setup in Activity/Fragment
 ```Activity/Fragment
-BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
 
-bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-    @Override
-    public void onItemSelected(int position) {
-        switch (position) {
-            case 0:
-                // Home selected
-                break;
-            case 1:
-                // Search selected
-                break;
-            case 2:
-                // Profile selected
-                break;
-        }
+bottomNav.setOnItemSelectedListener((index, item) -> {
+    switch (item.getItemId()) {
+        case R.id.home:
+            Toast.makeText(this, "Home Clicked", Toast.LENGTH_SHORT).show();
+            break;
+        case R.id.search:
+            Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show();
+            break;
+        case R.id.profile:
+            Toast.makeText(this, "Profile Clicked", Toast.LENGTH_SHORT).show();
+            break;
     }
 });
 ```
