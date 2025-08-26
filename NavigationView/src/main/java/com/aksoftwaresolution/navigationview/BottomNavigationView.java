@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,7 +21,6 @@ import androidx.appcompat.view.SupportMenuInflater;
 import androidx.appcompat.view.menu.MenuBuilder;
 
 public class BottomNavigationView extends View {
-
 
     private Paint backgroundPaint, circlePaint;
     private int backgroundColor, circleColor, iconColor, selectedIconColor;
@@ -35,6 +35,17 @@ public class BottomNavigationView extends View {
     // bubble radius
     private float arcRadius = 50f;
     private float animatedArcRadius = arcRadius;
+
+    // 🔥 Listener
+    public interface OnItemSelectedListener {
+        void onItemSelected(int index, MenuItem item);
+    }
+
+    private OnItemSelectedListener onItemSelectedListener;
+
+    public void setOnItemSelectedListener(OnItemSelectedListener listener) {
+        this.onItemSelectedListener = listener;
+    }
 
     public BottomNavigationView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -147,6 +158,8 @@ public class BottomNavigationView extends View {
             float width = getWidth();
             float itemWidth = width / itemCount;
             int index = (int) (event.getX() / itemWidth);
+
+            Log.d("BottomNav", "Touched Index: " + index);
             selectItem(index);
             return true;
         }
@@ -176,6 +189,11 @@ public class BottomNavigationView extends View {
             invalidate();
         });
         sizeAnim.start();
+
+        // 🔥 Callback পাঠানো Activity/Fragment এ
+        if (onItemSelectedListener != null && menu != null) {
+            onItemSelectedListener.onItemSelected(index, menu.getItem(index));
+        }
     }
 
     public int getSelectedIndex() {
