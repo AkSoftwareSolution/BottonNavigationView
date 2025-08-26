@@ -31,7 +31,7 @@ dependencyResolutionManagement {
 ### Step 2. Add the dependency in your app/build.gradle
 ```gradle
 dependencies {
-    implementation 'com.github.AkSoftwareSolution:BottonNavigationView:1.1.0'
+    implementation 'com.github.AkSoftwareSolution:BottonNavigationView:1.2.0'
 } 
 ```
 
