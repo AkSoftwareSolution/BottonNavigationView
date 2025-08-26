@@ -1,4 +1,4 @@
-
+ষ
 
 # BottonNavigationView (Custom Navigation View)
 
@@ -15,7 +15,7 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
-Step 2. Add the dependency in your app/build.gradle
+ Step 2. Add the dependency in your app/build.gradle
 dependencies {
     implementation 'com.github.AkSoftwareSolution:BottonNavigationView:1.0.0'
 }
