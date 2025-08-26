@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="MeowCloneNavigation">
+        <attr name="mcn_backgroundColor" format="color"/>
+        <attr name="mcn_circleColor" format="color"/>
+        <attr name="mcn_iconColor" format="color"/>
+        <attr name="mcn_selectedIconColor" format="color"/>
+        <attr name="menu" format="reference"/>
+    </declare-styleable>
+</resources>
